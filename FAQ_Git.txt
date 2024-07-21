@@ -49,4 +49,5 @@ Comment push un répertoire existant vers un nouveau répertoire git ?
 Les url du répertoire utilisé peut être vu avec la commande remote -v
 On ajoute une url avec git remote add nom_url url
 On en supprime avec git remote rm nom_url
-Une fois l'url configurée, on lance la commande git push -u nom_url main
+Une fois l'url configurée, on peut faire un premier commit
+Le premier push devra avoir l'argument --set-upstream origin main
