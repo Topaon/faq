@@ -1,0 +1,31 @@
+Comment configurer une carte micro sd pour installer un os sur un rpi ?
+connecter la carte sd à son ordinateur, en utilisant un adaptateur micro-sd vers usb :
+	1 - formatter la carte sd
+	2 - utiliser le logiciel Raspberry pi imager (choisir os + stockage)
+	3 - ctrl maj x : choisir nom, enable ssh, configurer wifi
+	4 - cliquer sur write
+mettre la carte sd dans le rpi
+le mettre sous tension (une diode doit s'allumer pour indiquer qu'il l'est, puis flasher pour indiquer que le rpi "travaille")
+s'y connecter en ssh depuis l'ordinateur (ssh user@url puis pw défini dans rpi imager)
+
+
+
+
+Comment configurer le wifi ?
+ajouter un fichier wpa_supplicant.conf à la racine avec comme contenu :
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=FR
+network={
+	ssid="Livebox-3120"
+	psk="Syg9YLX7CtSb3qapGd"
+	key_mgmt=WPA-PSK
+}
+
+
+
+
+Comment installer des packages python sur mon rpi ?
+Pour installer un package python sur un rpi il faut les installer sur un environnement virtuel python
+Pour cela on peut soit créer un environnement virtuel soit utiliser pipx au lieu de pip
+On peut installer pipx avec apt

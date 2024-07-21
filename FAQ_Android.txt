@@ -1,0 +1,98 @@
+Qu'est-ce qu'une activité ?
+Une activité est une classe Java qui sert de point d'entré à l'application et permet de controller ce qui s'affiche à l'écran
+
+
+
+Comment fonctionne une activité ?
+Une activité est un objet Java qui hérite de la classe AppCompactActivity
+On relie à un XML avec la méthode setContentView(), qui prend en paramètre le fichier XML en question
+On fait cela en surchargeant la méthode onCreate() de la classe FragmentActivity, dont hérite AppCompactActivity
+Il faut également spécifier un thème hérité de Theme.AppCompat.DayNight avec la méthode setTheme() dans onCreate()
+
+
+
+
+Comment organiser les écran de son application ?
+Toute l'application est contenu dans une Activité, et les écrans affichés sont soit des fragments, soit composé de fragments
+L'affichage de ces fragments est géré avec l'Activité via le FragmentManager
+
+
+
+
+
+Qu'est-ce qu'un FragmentManager ?
+Il s'agit d'une classe java lié à l'activité qui permet divers actions comment l'affichage de fragments à l'écran
+On obtient sa référence avec la méthode getSupportFragmentManager de l'activité
+
+
+
+
+Qu'est-ce qu'une FragmentTransaction ?
+Il s'agit d'une classe Java qui sert à afficher dynamiquement des fragments à l'écran
+Elle s'obtient avec la méthode beginTransaction() du FragmentManager, sans paramètre
+Une fois l'instance de FragmentTransaction créée, on peut y ajouter différentes actions comme :
+ - L'ajout de fragment avec la méthode add, qui prend en paramètre l'id de l'élément qui servira de container au fragment et le fragment en lui-même
+ - Le remplacement d'un fragment par un autre avec la méthode replace, qui prend en paramètre le container des fragments à retirer, et le fragment à afficher à la place
+ - La suppression de fragment avec la méthode remove, qui prend en paramètre un fragment à retirer de l'écran
+Une fois les actions ajoutées à l'objet FragmentTransaction on les valide avec la méthode commit(), sans paramètre
+
+
+
+
+Qu'est-ce que l'hôte d'un fragment ?
+Il s'agit de l'objet contenant le fragment, en général une activité
+
+
+
+
+Qu'est-ce que surcharger une méthode ?
+Il s'agit de modifier la méthode d'une classe dans une une classe qui en hérite
+Il y a surcharge quand on définit une méthode dans la sous-classe avec le même nom et type de retour qu'une méthode de la classe parent
+La méthode la plus simple consiste à copier coller la méthode à surcharger puis de modifier son corps
+On peut appeller la méthode surchargée avec le mot-clé super.methodeSurchargee() et en paramètre les paramètre prévus pour la méthode
+
+
+
+
+Comment revenir à l'écran précédent ?
+On utilise la méthode popBackStack() de l'objet FragmentManager
+
+
+
+Comment créer une animation ?
+Les animations sont gérées par la classe ObjectAnimator
+On créé une instance de la classe ObjectAnimator avec les méthodes static ofFloat, ofInt, ofLon... (selon le type du paramètre cible) de la classe ObjectAnimator, avec en paramètre la View à animer, le paramètre cible en string et les valeurs de début et de fin
+A l'utilisation de la méthode start() de l'ObjectAnimator créé, la valeur du paramètre cible évoluera depuis la valeur de début vers la valeur de fin, sur une durée par défaut de 1s
+On peut modifier la durée, la courbe ou ajouter un délai de démarrage en utilisant les méthode setDuration(), setInterpolar() et setStartDelay() de l'objet ObjectAnimator
+
+
+
+Comment jouer plusieurs animation ?
+On peut utiliser la classe AnimatorSet
+On créé une instance de cette classe à l'aide d'un constructeur sans paramètre
+Ensuite on le configure avec la méthode play() qui prend en paramètre l'objet ObjectAnimator à intégrer au set
+On peut utiliser la méthode playTogether() avec en paramètre plusieurs ObjectAnimator pour jouer plusieurs animations en même temps
+Pour ordonner les animations, on appelle la méthode after() sur le retour de la méthode play() avec en paramètre l'ObjectAnimator après laquelle sera déclenchée celle-ci
+Une fois démarré avec la méthode start() l'objet AnimatorSet déclenchera les animations configuré les unes après les autres (ou en même temps si des playTogether ont été configurés)
+
+
+
+
+Qu'est-ce qu'une animation ?
+Une animation dans Android est l'action de faire varier une valeur d'un début à une fin, sur une durée déterminée
+Lier cette valeur à un attribut d'élément de l'écran permet de créer des effets visuels
+
+
+
+
+Comment programmer une action à la fin d'une animation ?
+En appelant la méthode addListener() d'un objet ObjectAnimator ou AnimatorSet
+Cette méthode prend en paramètre l'interface AnimatorListener, comprenant les méthodes onAnimationStart(), onAnimationEnd(), … 
+Que l'on peut surcharger avec des instructions spécifiques
+
+
+
+
+Comment ajouter une action onClick à une View ?
+En appelant la méthode setOnClickListener de cette View, qui prend en paramètre l'interface OnClickListener de l'objet View
+On peut simplifier l'écriture avec une fonction fléchée

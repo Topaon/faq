@@ -1,0 +1,22 @@
+Comment créer un fichier json en Java ?
+On manipule le json en java en utilisant la classe JSONObject de la librairie json
+On commence par créer une instance de la classe JSONObject en utilisant un constructeur sans paramètre
+JSONObject json = new JSONObject();
+json.put("age", 26);
+json.getInteger("age");
+
+
+
+
+Comment récupérer des données d'un fichier json en Java ?
+JSONObject json = new JSONObject(données);
+Integer x_value = (Integer) json.getInteger("x");
+String y_value = (String) json.getString("y");
+JSONArray jsonArray = json.getJSONArray("mon_array");
+String name = jsonArray.getString(indice);
+
+
+
+
+Comment vérifier qu'une liste est vide ou non ?
+Avec la méthode isEmpty() de la classe ArrayList

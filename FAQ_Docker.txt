@@ -1,0 +1,52 @@
+Qu'est-ce qu'un container ?
+Un container est un environnement miniature comprenant tous les éléments nécessaires à l'exécution d'un programme
+En pratique c'est une vm plus souple mais moins sécurisée, qui permet de ne pas avoir de problèmes de compatibilité
+Docker est un programme de gestion de container.
+
+
+
+
+Comment créer un container ?
+Un container se créé à partir d'une image
+On peut récupérer une image en ligne ou créer une image personnalisée dans un Dockerfile puis lancer la commande
+docker build chemin_vers_image
+
+
+
+
+Comment consulter la liste des images existantes locales ?
+docker images
+
+
+
+
+Comment supprimer une image locale ?
+docker rmi id_image
+
+
+
+
+Comment démarrer un container à partir d'une image ?
+docker run id_image
+L'option -d permet de faire le lancement en arrière-plan pour garder la console de libre
+L'option -p permet de rediriger un port local vers un port du contenaire :
+docker run -p portlocal:portcontenaire id_image
+
+
+
+
+Comment arrêter un container ?
+docker stop id_container
+
+
+
+
+Comment voir les containers actifs ?
+docker ps
+L'option -a permet de voir également les containers non-actifs
+
+
+
+
+Comment connecter un shell à un container actif ?
+docker exec -ti id_container bash

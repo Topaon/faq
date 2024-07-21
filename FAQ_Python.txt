@@ -1,0 +1,23 @@
+Comment voir les packages installé ?
+pip freeze
+pip list
+
+
+
+
+Comment afficher les détail d'un package ?
+pip show nom_package
+
+
+
+
+Comment créer un environnement virtuel sur Python ?
+Commande python avec l'option -m et les paramètre venv, nom de l'environnement
+python -m venv nom_env
+
+
+
+
+Comment activer un venv python ?
+source bin/activate
+on le désactive avec la commande deactivate

@@ -1,0 +1,5 @@
+Comment toucher une molo de viper n'importe où ?
+	1 - Regarder tout en l'air
+	2 - Se mettre bien en face de la cible à l'aide de la minimap
+	3 - Marcher jusqu'à ce que la cible entre entièrement dans la zone de bruit de pas
+	4 - tirer

@@ -1,0 +1,36 @@
+Qu'est-ce que Jenkins ?
+Jenkins est un outil que permet de lancer des jobs automatiquements sur un environnement
+On installe Jenkins sur la machine sur laquelle on souhaite exécuter les commandes.
+Les commandes d'installation le font démarrer au lancement de la machine, ce qui permet d'accéder à l'interface de configuration sur le port 8080 (configurable) de celle-ci
+Autrement jenkins se contrôle avec l'outil systemctl
+Les commandes seront exécutée avec un user "jenkins" créé à l'installation
+
+
+
+
+Comment fonctionne Jenkins ?
+Le paramétrage de jenkins se fait sur l'interface de configuration accessible sur le port 8080
+L'entité de base de Jenkins est le pipeline, un fichier Jenkinsfile qui contient les jobs à exécuter, et quand les exécuter
+On peut déclencher un pipeline manuellement, ou le paramétrer pour qu'il s'exécute en réponse à des "triggers" (timer CRON, gitpush, etc...)
+
+
+
+
+Comment configurer un job Jenkins simple ?
+Sur l'interface web de Jenkins (port 8080 de la machine hôte), créer un item nom_item en tant que projet freestyle
+Dans le section "étapes du build", ajouter une étape "execution d'un script shell" et le remplir
+Le script sera exécuté avec le user jenkins à l'emplacement : /var/lib/jenkins/workspace/nom_item
+
+
+
+
+Comment configurer un job jenkins qui s'exécute à chaque push sur un répertoire git ?
+Sur l'interface web de Jenkins (port 8080 de la machine hôte), créer un item nom_item en tant que projet freestyle
+Le plug_in jenkins de github doit être installé. Dans la section "Gestion de code source", selectionner Git et renseigner l'url du repository
+Vider la ligne "Branches to build"
+A la ligne des déclencheur du build, cocher "GitHub hook trigger for GITScm polling"
+Et a la ligne "Environnement de build" cocher "Delete workspace before build starts"
+Ensuite configurer un build par script shell comme pour un item classique
+Le plug-in github va automatiquement faire un git clone du repository dans /var/lib/jenkins/workspace/nom_item et se placer à la racine du répertoire cloné
+Le script shell sera effectué à cete endroit
+En configurant un webhook côté github, le build se déclenchera à chaque push effectué sur le répertoire github

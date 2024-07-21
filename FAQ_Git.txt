@@ -1,0 +1,52 @@
+Qu'est-ce Git ?
+Git est un outil de gestion de versionnement et de partage de fichier
+
+
+
+
+Comment fonctionne le partage de fichier sur git ?
+On créé un dossier mon_dossier, puis on l'initialise avec "git init". Ainsi ce dossier peut utiliser les fonctionnalités de git
+Pour connecter ce dossier à un répertoire git, on utilise les commandes :
+git remote add origin url_du_repertoire_git => pour se connecter au répertoire
+git pull => pour récupérer les fichiers existants
+git push --set-upstream origin main => uniquement la première fois pour mettre en place le flux ascendant
+
+
+
+Comment partager des modifications sur git ?
+git add fichier_modifié
+git commit -m "commentaire"
+git push
+
+
+
+
+Comment récupérer les fichiers à jour ?
+git pull
+
+
+
+Set-up un répertoire git ?
+git clone url
+git config --global user.name "simon ubuntu"
+git config --global user.email "simon.granier@sfr.fr"
+
+
+
+Comment configurer l'accès via une clé SSH ?
+Créer une clé .ssh si ce n'est pas déjà fait avec la commande :
+ssh-keygen -t rsa -b 4096
+Ajouter la clé au SSH agent :
+ssh-add ~/.ssh/id_rsa
+Ajouter la clé id_rsa.pub générée aux clés ssh autorisées dans le repertoire github
+Configurer le répertoire local pour utiliser l'authentification ssh :
+git remote set-url origin git@github.com:usernamegithub/repository_name.git
+git remote -v pour vérifier que le changement a bien été effectué
+
+
+
+Comment push un répertoire existant vers un nouveau répertoire git ?
+Les url du répertoire utilisé peut être vu avec la commande remote -v
+On ajoute une url avec git remote add nom_url url
+On en supprime avec git remote rm nom_url
+Une fois l'url configurée, on lance la commande git push -u nom_url main
