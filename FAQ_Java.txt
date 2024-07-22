@@ -20,3 +20,19 @@ String name = jsonArray.getString(indice);
 
 Comment vérifier qu'une liste est vide ou non ?
 Avec la méthode isEmpty() de la classe ArrayList
+
+
+
+
+Qu'est-ce qu'un thread ?
+Un thread est un fil d'exécution qui exécute du code.
+En Java les thread sont géré par la classe Thread et l'interface Runnable
+Si on souhaite exécuter une tache en parallèle d'une autre plutôt que d'attendre la fin de celle-ci, on créé une instance de la classe Thread avec un constructeur prenant en paramètre un objet Runnable
+Ensuite on démarre le thread avec la méthode start() de la classe Thread, qui appellera la méthode run() du Runnable passé en paramètre. C'est cette méthode run() qui contient le code à exécuter par le thread
+
+
+
+
+Que se passe-t-il si deux thread utilisent le même objet en même temps ?
+Ils utilisent les même données en même temps. Ce n'est pas très propre et peut poser problème, c'est pourquoi le mot-clé synchronized a été créé. synchronized (Objet) {code}. Tant que le code entre parenthèse est en cours d'exécution, l'objet Object est inaccessible et les threads devant l'utiliser attendront la fin du code en accolade pour le faire.
+Placé devant une méthode (à la manière de static ou private), il signifie que si la méthode est appellé l'objet sera inaccessible aux autres thread tant que la méthode sera en cours d'exécution
