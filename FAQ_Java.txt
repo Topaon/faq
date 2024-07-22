@@ -40,10 +40,33 @@ Placé devant une méthode (à la manière de static ou private), il signifie qu
 
 
 
-Qu'est-ce que la méthode wait() et notify() ?
+Comment coordonner les thread entre eux ?
 wait() et notify() sont des méthode de la classe Object qui permettent d'arrêter et de reprendre un thread.
 Si un thread appelle la méthode wait() sur un objet, il sera mis en pause jusqu'à ce qu'un autre thread appelle la méthode notify() depuis ce même objet. La méthode notifyAll() réveille tous les thread en wait() depuis cet objet
+On peut également appeller la méthode join() d'un objet Thread pour mettre en wait le thread actuel jusqu'à la fin du thread exécuté par cet objet Thread
 
 
 
 
+A quoi sert la classe ThreadLocal ?
+A gérer l'accessibilité des variables par les threads
+
+
+
+
+Qu'est-ce qu'un interface uni-fonctionnelle ?
+C'est une interface qui n'a qu'une méthode à implémenter.
+Le principal avantage de ce genre d'interface est l'allégement du code :
+Si une méthode demande une interface uni-fonctionnelle en paramètre, au lieu de créer une classe qui implémente cette interface on peut simplement définir la méthode de l'interface sans créer d'objet (soi-même) :
+methode(() -> {code})
+Le code dans les accolades sera considéré comme l'implémentation de l'unique méthode de l'interface
+Runnable est un exemple d'interface uni-fonctionnelle, Callable un autre (qui renvoie une varaible)
+
+
+
+
+A quoi sert la classe Semaphore ?
+La classe Semaphore sert à gérer les ressources utilisées par les thread via un système de jetons
+On créé une instance de la classe Semaphore avec un constructeur qui prend en paramètre le nombre de jeton.
+Un Thread peut appeller la méthode aquire() de l'objet Semaphore pour obtenir un jeton, et release() pour le rendre.
+La méthode tryAquire(ms) permet d'essayer d'obtenir un jeton pendant x ms
