@@ -36,3 +36,14 @@ Ensuite on démarre le thread avec la méthode start() de la classe Thread, qui 
 Que se passe-t-il si deux thread utilisent le même objet en même temps ?
 Ils utilisent les même données en même temps. Ce n'est pas très propre et peut poser problème, c'est pourquoi le mot-clé synchronized a été créé. synchronized (Objet) {code}. Tant que le code entre parenthèse est en cours d'exécution, l'objet Object est inaccessible et les threads devant l'utiliser attendront la fin du code en accolade pour le faire.
 Placé devant une méthode (à la manière de static ou private), il signifie que si la méthode est appellé l'objet sera inaccessible aux autres thread tant que la méthode sera en cours d'exécution
+
+
+
+
+Qu'est-ce que la méthode wait() et notify() ?
+wait() et notify() sont des méthode de la classe Object qui permettent d'arrêter et de reprendre un thread.
+Si un thread appelle la méthode wait() sur un objet, il sera mis en pause jusqu'à ce qu'un autre thread appelle la méthode notify() depuis ce même objet. La méthode notifyAll() réveille tous les thread en wait() depuis cet objet
+
+
+
+
